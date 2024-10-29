@@ -2,13 +2,13 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticDrill.WebApi", "GeneticDrill.WebApi\GeneticDrill.WebApi.csproj", "{BC5775FD-F850-499D-BB74-70802F145EDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticDrill.Shared", "GeneticDrill.Shared\GeneticDrill.Shared.csproj", "{CF2ADD18-16E2-4B3F-9563-583ADD2375F8}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C00C96F9-F43A-4626-A70F-E60225FD94C9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E607EEAC-B8CB-45B1-9B00-63A6A06F6F76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticDrill.IntegrationTests", "GeneticDrill.IntegrationTests\GeneticDrill.IntegrationTests.csproj", "{1C4A6D99-8491-46F0-B76A-48873E1225DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticDrill.WebApi.IntegrationTests", "GeneticDrill.WebApi.IntegrationTests\GeneticDrill.WebApi.IntegrationTests.csproj", "{1C4A6D99-8491-46F0-B76A-48873E1225DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticDrill.WebApi.ArchitectureTests", "GeneticDrill.WebApi.ArchitectureTests\GeneticDrill.WebApi.ArchitectureTests.csproj", "{2D8DE7E0-1953-4FC6-A9BE-55A4CF5B44F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,18 +20,18 @@ Global
 		{BC5775FD-F850-499D-BB74-70802F145EDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC5775FD-F850-499D-BB74-70802F145EDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC5775FD-F850-499D-BB74-70802F145EDD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CF2ADD18-16E2-4B3F-9563-583ADD2375F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF2ADD18-16E2-4B3F-9563-583ADD2375F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF2ADD18-16E2-4B3F-9563-583ADD2375F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF2ADD18-16E2-4B3F-9563-583ADD2375F8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1C4A6D99-8491-46F0-B76A-48873E1225DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1C4A6D99-8491-46F0-B76A-48873E1225DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C4A6D99-8491-46F0-B76A-48873E1225DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C4A6D99-8491-46F0-B76A-48873E1225DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D8DE7E0-1953-4FC6-A9BE-55A4CF5B44F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D8DE7E0-1953-4FC6-A9BE-55A4CF5B44F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D8DE7E0-1953-4FC6-A9BE-55A4CF5B44F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D8DE7E0-1953-4FC6-A9BE-55A4CF5B44F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{CF2ADD18-16E2-4B3F-9563-583ADD2375F8} = {C00C96F9-F43A-4626-A70F-E60225FD94C9}
 		{BC5775FD-F850-499D-BB74-70802F145EDD} = {C00C96F9-F43A-4626-A70F-E60225FD94C9}
 		{1C4A6D99-8491-46F0-B76A-48873E1225DE} = {E607EEAC-B8CB-45B1-9B00-63A6A06F6F76}
+		{2D8DE7E0-1953-4FC6-A9BE-55A4CF5B44F8} = {E607EEAC-B8CB-45B1-9B00-63A6A06F6F76}
 	EndGlobalSection
 EndGlobal

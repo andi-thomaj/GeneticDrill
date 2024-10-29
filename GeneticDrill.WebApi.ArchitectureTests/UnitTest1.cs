@@ -1,4 +1,4 @@
-namespace GeneticDrill.IntegrationTests;
+namespace GeneticDrill.WebApi.ArchitectureTests;
 
 public class UnitTest1
 {

@@ -20,4 +20,8 @@
         <Using Include="Xunit"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\GeneticDrill.WebApi\GeneticDrill.WebApi.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -1,3 +1,6 @@
+using GeneticDrill.WebApi.Helpers;
+using GeneticDrill.WebApi.Models.Configurations;
+
 namespace GeneticDrill.WebApi;
 
 public class Program
@@ -5,13 +8,19 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-
+        var services = builder.Services;
+        var configuration = builder.Configuration;
         // Add services to the container.
-        builder.Services.AddAuthorization();
-
+        services.AddAuthorization();
+        services.AddSingleton<DapperContext>();
+        
+        services.AddOptions<DapperConfiguration>()
+            .Bind(configuration.GetSection(DapperConfiguration.SectionName))
+            .ValidateDataAnnotations()
+            .ValidateOnStart();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
+        services.AddEndpointsApiExplorer();
+        services.AddSwaggerGen();
 
         var app = builder.Build();
 
