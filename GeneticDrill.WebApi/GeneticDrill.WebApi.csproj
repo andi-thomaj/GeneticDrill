@@ -17,9 +17,7 @@
     <ItemGroup>
       <Folder Include="Apis\" />
       <Folder Include="DataAccess\Abstractions\" />
-      <Folder Include="DataAccess\Entities\" />
       <Folder Include="DataAccess\Implementations\" />
-      <Folder Include="DataAccess\Sql\" />
       <Folder Include="Models\Requests\" />
       <Folder Include="Models\Responses\" />
       <Folder Include="Services\Abstractions\" />
