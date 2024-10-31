@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticDrill.WebApi.Integra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticDrill.WebApi.ArchitectureTests", "GeneticDrill.WebApi.ArchitectureTests\GeneticDrill.WebApi.ArchitectureTests.csproj", "{2D8DE7E0-1953-4FC6-A9BE-55A4CF5B44F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticDrill.WebApi.Shared.Tests", "GeneticDrill.WebApi.Shared.Tests\GeneticDrill.WebApi.Shared.Tests.csproj", "{BCD171D4-3667-4E23-87EF-F77BA215C8E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,10 +30,15 @@ Global
 		{2D8DE7E0-1953-4FC6-A9BE-55A4CF5B44F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D8DE7E0-1953-4FC6-A9BE-55A4CF5B44F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D8DE7E0-1953-4FC6-A9BE-55A4CF5B44F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCD171D4-3667-4E23-87EF-F77BA215C8E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCD171D4-3667-4E23-87EF-F77BA215C8E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCD171D4-3667-4E23-87EF-F77BA215C8E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCD171D4-3667-4E23-87EF-F77BA215C8E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BC5775FD-F850-499D-BB74-70802F145EDD} = {C00C96F9-F43A-4626-A70F-E60225FD94C9}
 		{1C4A6D99-8491-46F0-B76A-48873E1225DE} = {E607EEAC-B8CB-45B1-9B00-63A6A06F6F76}
 		{2D8DE7E0-1953-4FC6-A9BE-55A4CF5B44F8} = {E607EEAC-B8CB-45B1-9B00-63A6A06F6F76}
+		{BCD171D4-3667-4E23-87EF-F77BA215C8E2} = {E607EEAC-B8CB-45B1-9B00-63A6A06F6F76}
 	EndGlobalSection
 EndGlobal

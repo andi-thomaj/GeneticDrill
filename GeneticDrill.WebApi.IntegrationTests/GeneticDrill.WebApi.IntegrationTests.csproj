@@ -21,6 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\GeneticDrill.WebApi.Shared.Tests\GeneticDrill.WebApi.Shared.Tests.csproj" />
       <ProjectReference Include="..\GeneticDrill.WebApi\GeneticDrill.WebApi.csproj" />
     </ItemGroup>
 
