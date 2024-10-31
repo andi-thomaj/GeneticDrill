@@ -1,0 +1,6 @@
+﻿services:
+  geneticdrill.webapi:
+    image: geneticdrill.webapi
+    build:
+      context: .
+      dockerfile: GeneticDrill.WebApi/Dockerfile

@@ -1,0 +1,21 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  geneticdrill.webapi:
+    build:
+      context: "C:\\Users\\User\\RiderProjects\\GeneticDrill"
+      dockerfile: "GeneticDrill.WebApi/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/GeneticDrill.WebApi.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "geneticdrill.webapi:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\User\\.nuget\\packages:/home/app/.nuget/packages"
+    - "C:\\Users\\User\\RiderProjects\\GeneticDrill\\GeneticDrill.WebApi:/app:rw"
+    - "C:\\Users\\User\\RiderProjects\\GeneticDrill:/src:rw"
+    working_dir: "/app"

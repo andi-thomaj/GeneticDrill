@@ -12,6 +12,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticDrill.WebApi.Archite
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticDrill.WebApi.Shared.Tests", "GeneticDrill.WebApi.Shared.Tests\GeneticDrill.WebApi.Shared.Tests.csproj", "{BCD171D4-3667-4E23-87EF-F77BA215C8E2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{56F3C5D7-FADF-489C-BD15-8A3D90D5E8D6}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -1,3 +1,5 @@
+using GeneticDrill.WebApi.Helpers;
+using GeneticDrill.WebApi.Helpers.Configurations;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -11,7 +13,7 @@ public class IntegrationTestWebApplicationFactory : WebApplicationFactory<Progra
 {
     private readonly PostgreSqlContainer _dbContainer = new PostgreSqlBuilder()
         .WithImage("postgres:latest")
-        .WithDatabase("modelgen")
+        .WithDatabase("development_genetic_drill")
         .WithUsername("postgres")
         .WithPassword("postgres")
         .Build();
@@ -21,8 +23,8 @@ public class IntegrationTestWebApplicationFactory : WebApplicationFactory<Progra
         builder.ConfigureTestServices(services =>
         {
             // var descriptor = services
-            //     .SingleOrDefault(x => x.ServiceType == typeof(DbContextOptions<ModelGenDbContext>));
-
+            //     .SingleOrDefault(x => x.ServiceType == typeof(DapperContext));
+            //
             // if (descriptor is not null)
             // {
             //     services.Remove(descriptor);
@@ -34,15 +36,14 @@ public class IntegrationTestWebApplicationFactory : WebApplicationFactory<Progra
             // services.AddAuthentication(defaultScheme: "TestScheme")
             //     .AddScheme<AuthenticationSchemeOptions, TestAuthenticationHandler>(
             //         "TestScheme", options => { });
+            
+            // services.AddOptions<DapperConfiguration>()
+            //     .Bind(configuration.GetSection(DapperConfiguration.SectionName))
+            //     .ValidateDataAnnotations()
+            //     .ValidateOnStart();
         });
     }
-    public Task InitializeAsync()
-    {
-        throw new NotImplementedException();
-    }
+    public Task InitializeAsync() => _dbContainer.StartAsync();
 
-    public Task DisposeAsync()
-    {
-        throw new NotImplementedException();
-    }
+    public new Task DisposeAsync() => _dbContainer.StopAsync();
 }
