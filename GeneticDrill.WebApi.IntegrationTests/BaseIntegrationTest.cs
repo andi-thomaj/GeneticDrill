@@ -1,3 +1,4 @@
+using GeneticDrill.WebApi.Services.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GeneticDrill.WebApi.IntegrationTests;
@@ -5,10 +6,12 @@ namespace GeneticDrill.WebApi.IntegrationTests;
 public class BaseIntegrationTest : IClassFixture<IntegrationTestWebApplicationFactory>
 {
     private readonly IServiceScope _scope;
-    protected readonly IntegrationTestWebApplicationFactory _factory;
+    protected readonly IUserService _userService;
     public BaseIntegrationTest(IntegrationTestWebApplicationFactory factory)
     {
-        _factory = factory;
-        _scope = _factory.s
+        _scope = factory.Services.CreateScope();
+
+        _userService = _scope.ServiceProvider.GetRequiredService<IUserService>();
+        
     }
 }
