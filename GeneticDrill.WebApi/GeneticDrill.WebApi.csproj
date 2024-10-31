@@ -15,14 +15,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Apis\" />
-      <Folder Include="DataAccess\Abstractions\" />
-      <Folder Include="DataAccess\Implementations\" />
-      <Folder Include="Models\Requests\" />
-      <Folder Include="Models\Responses\" />
-      <Folder Include="Services\Abstractions\" />
-      <Folder Include="Services\Implementations\" />
-      <Folder Include="Validations\" />
+      <Folder Include="Apis\Users\Requests\" />
+      <Folder Include="Apis\Users\Validations\" />
     </ItemGroup>
 
 </Project>

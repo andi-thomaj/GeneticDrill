@@ -1,5 +1,10 @@
+using GeneticDrill.WebApi.Apis.Users;
+using GeneticDrill.WebApi.DataAccess.Abstractions;
+using GeneticDrill.WebApi.DataAccess.Implementations;
 using GeneticDrill.WebApi.Helpers;
 using GeneticDrill.WebApi.Models.Configurations;
+using GeneticDrill.WebApi.Services.Abstractions;
+using GeneticDrill.WebApi.Services.Implementations;
 
 namespace GeneticDrill.WebApi;
 
@@ -18,7 +23,11 @@ public class Program
             .Bind(configuration.GetSection(DapperConfiguration.SectionName))
             .ValidateDataAnnotations()
             .ValidateOnStart();
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IUserService, UserService>();
+        services.AddSingleton<DapperContext>();
+        
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
 
@@ -40,20 +49,7 @@ public class Program
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        app.MapGet("/weatherforecast", (HttpContext httpContext) =>
-            {
-                var forecast = Enumerable.Range(1, 5).Select(index =>
-                        new WeatherForecast
-                        {
-                            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                            TemperatureC = Random.Shared.Next(-20, 55),
-                            Summary = summaries[Random.Shared.Next(summaries.Length)]
-                        })
-                    .ToArray();
-                return forecast;
-            })
-            .WithName("GetWeatherForecast")
-            .WithOpenApi();
+        app.MapUsersEndpoints();
 
         app.Run();
     }
