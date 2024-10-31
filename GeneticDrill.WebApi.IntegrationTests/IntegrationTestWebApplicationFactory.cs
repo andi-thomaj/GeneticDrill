@@ -36,13 +36,14 @@ public class IntegrationTestWebApplicationFactory : WebApplicationFactory<Progra
             // services.AddAuthentication(defaultScheme: "TestScheme")
             //     .AddScheme<AuthenticationSchemeOptions, TestAuthenticationHandler>(
             //         "TestScheme", options => { });
-            
+
             // services.AddOptions<DapperConfiguration>()
             //     .Bind(configuration.GetSection(DapperConfiguration.SectionName))
             //     .ValidateDataAnnotations()
             //     .ValidateOnStart();
         });
     }
+
     public Task InitializeAsync() => _dbContainer.StartAsync();
 
     public new Task DisposeAsync() => _dbContainer.StopAsync();

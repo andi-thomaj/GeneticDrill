@@ -5,5 +5,6 @@ namespace GeneticDrill.WebApi.DataAccess.Abstractions;
 
 public interface IUserRepository
 {
-    public Task<Result<GetUserByEmailResponse>> GetUserByEmailAsync(string email, CancellationToken cancellationToken = default);
+    public Task<Result<GetUserByEmailResponse>> GetUserByEmailAsync(string email,
+        CancellationToken cancellationToken = default);
 }

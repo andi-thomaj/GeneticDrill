@@ -9,6 +9,7 @@ public class BaseIntegrationTest : IClassFixture<IntegrationTestWebApplicationFa
     private readonly IServiceScope _scope;
     protected readonly IUserService _userService;
     protected readonly DapperContext _dapperContext;
+
     public BaseIntegrationTest(IntegrationTestWebApplicationFactory factory)
     {
         _scope = factory.Services.CreateScope();

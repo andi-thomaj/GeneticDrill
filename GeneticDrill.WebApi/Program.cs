@@ -19,7 +19,7 @@ public class Program
         var configuration = builder.Configuration;
         // Add services to the container.
         services.AddAuthorization();
-        
+
         services.AddOptions<DapperConfiguration>()
             .Bind(configuration.GetSection(DapperConfiguration.SectionName))
             .ValidateDataAnnotations()
@@ -28,7 +28,7 @@ public class Program
         services.AddSingleton<DapperContext>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUserService, UserService>();
-        
+
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();

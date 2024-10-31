@@ -19,7 +19,7 @@ public static class UsersEndpoints
         IUserService userService, CancellationToken cancellationToken)
     {
         var result = await userService.GetUserByEmailAsync(email, cancellationToken);
-        
+
         return result.IsSuccess ? TypedResults.Ok(result.Value) : TypedResults.NotFound();
     }
 }

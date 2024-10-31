@@ -1,14 +1,15 @@
-CREATE TABLE users (
-   "id" UUID PRIMARY KEY DEFAULT uuid_generate_v4() NOT NULL,
-   first_name VARCHAR(50) NOT NULL,
-   middle_name VARCHAR(50),
-   last_name VARCHAR(50) NOT NULL,
-   email VARCHAR(100) NOT NULL,
-   "password" VARCHAR(100) NOT NULL,
-   is_blocked BOOLEAN DEFAULT FALSE NOT NULL,
-   is_deleted BOOLEAN DEFAULT FALSE NOT NULL,
-   login_attempts_count INT DEFAULT 0 NOT NULL,
-   "token" VARCHAR(10_000),
+CREATE TABLE users
+(
+    "id"                 UUID PRIMARY KEY DEFAULT uuid_generate_v4() NOT NULL,
+    first_name           VARCHAR(50)                                 NOT NULL,
+    middle_name          VARCHAR(50),
+    last_name            VARCHAR(50)                                 NOT NULL,
+    email                VARCHAR(100)                                NOT NULL,
+    "password"           VARCHAR(100)                                NOT NULL,
+    is_blocked           BOOLEAN          DEFAULT FALSE              NOT NULL,
+    is_deleted           BOOLEAN          DEFAULT FALSE              NOT NULL,
+    login_attempts_count INT              DEFAULT 0                  NOT NULL,
+    "token"              VARCHAR(10_000) ,
     refresh_token VARCHAR(10_000),
     google_token VARCHAR(10_000),
     google_picture_url VARCHAR(500),
@@ -20,4 +21,5 @@ CREATE TABLE users (
     updated_by VARCHAR(50)
 );
 
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE
+EXTENSION IF NOT EXISTS "uuid-ossp";
