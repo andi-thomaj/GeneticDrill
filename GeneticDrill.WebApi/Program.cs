@@ -1,8 +1,10 @@
+using System.Reflection;
+using FluentValidation;
 using GeneticDrill.WebApi.Apis.Users;
 using GeneticDrill.WebApi.DataAccess.Abstractions;
 using GeneticDrill.WebApi.DataAccess.Implementations;
 using GeneticDrill.WebApi.Helpers;
-using GeneticDrill.WebApi.Models.Configurations;
+using GeneticDrill.WebApi.Helpers.Configurations;
 using GeneticDrill.WebApi.Services.Abstractions;
 using GeneticDrill.WebApi.Services.Implementations;
 
@@ -17,17 +19,17 @@ public class Program
         var configuration = builder.Configuration;
         // Add services to the container.
         services.AddAuthorization();
-        services.AddSingleton<DapperContext>();
         
         services.AddOptions<DapperConfiguration>()
             .Bind(configuration.GetSection(DapperConfiguration.SectionName))
             .ValidateDataAnnotations()
             .ValidateOnStart();
 
+        services.AddSingleton<DapperContext>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUserService, UserService>();
-        services.AddSingleton<DapperContext>();
         
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
 
@@ -43,11 +45,7 @@ public class Program
         app.UseHttpsRedirection();
 
         app.UseAuthorization();
-
-        var summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        app.UseAuthorization();
 
         app.MapUsersEndpoints();
 

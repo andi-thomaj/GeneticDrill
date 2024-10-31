@@ -9,14 +9,14 @@
     <ItemGroup>
         <PackageReference Include="Dapper" Version="2.1.35" />
         <PackageReference Include="FluentValidation" Version="11.10.0" />
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.10.0" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.10"/>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
         <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Apis\Users\Requests\" />
-      <Folder Include="Apis\Users\Validations\" />
+      <Folder Include="Helpers\Extensions\" />
     </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-namespace GeneticDrill.WebApi.Models.Configurations;
+namespace GeneticDrill.WebApi.Helpers.Configurations;
 
 public class DapperConfiguration
 {

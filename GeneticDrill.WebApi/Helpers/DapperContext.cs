@@ -1,6 +1,6 @@
 using System.Data;
 using System.Data.SqlClient;
-using GeneticDrill.WebApi.Models.Configurations;
+using GeneticDrill.WebApi.Helpers.Configurations;
 using Microsoft.Extensions.Options;
 
 namespace GeneticDrill.WebApi.Helpers;
