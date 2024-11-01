@@ -4,6 +4,7 @@ using GeneticDrill.WebApi.Apis.Users;
 using GeneticDrill.WebApi.DataAccess.Abstractions;
 using GeneticDrill.WebApi.DataAccess.Implementations;
 using GeneticDrill.WebApi.Helpers;
+using GeneticDrill.WebApi.Helpers.Extensions;
 using GeneticDrill.WebApi.Services.Abstractions;
 using GeneticDrill.WebApi.Services.Implementations;
 
@@ -33,12 +34,13 @@ public class Program
         services.AddSwaggerGen();
 
         var app = builder.Build();
-
+        
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
             app.UseSwaggerUI();
+            app.InitializeDatabase();
         }
 
         app.UseHttpsRedirection();

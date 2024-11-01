@@ -1,3 +1,4 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TABLE users
 (
     "id"                 UUID PRIMARY KEY DEFAULT uuid_generate_v4() NOT NULL,
@@ -21,5 +22,4 @@ CREATE TABLE users
     updated_by VARCHAR(50)
 );
 
-CREATE
-EXTENSION IF NOT EXISTS "uuid-ossp";
+

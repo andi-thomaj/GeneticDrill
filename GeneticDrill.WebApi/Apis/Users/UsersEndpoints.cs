@@ -8,7 +8,7 @@ public static class UsersEndpoints
 {
     public static IEndpointRouteBuilder MapUsersEndpoints(this IEndpointRouteBuilder builder)
     {
-        var routeGroupBuilder = builder.MapGroup("api/users").RequireAuthorization();
+        var routeGroupBuilder = builder.MapGroup("api/users");
 
         routeGroupBuilder.MapGet("{email}", GetUserByEmail);
 

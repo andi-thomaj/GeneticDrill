@@ -10,6 +10,6 @@ public class UsersWebApiTests(IntegrationTestWebApplicationFactory factory) : Ba
     {
         var user = AutoFaker.Generate<DataAccess.Entities.User>();
 
-        var result = await _userService.GetUserByEmailAsync(user.Email);
+        var result = await _userService.GetUserByEmailAsync("andi.dev94@gmail.com");
     }
 }
