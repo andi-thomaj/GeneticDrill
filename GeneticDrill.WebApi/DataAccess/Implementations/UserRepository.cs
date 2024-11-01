@@ -60,7 +60,7 @@ public class UserRepository(DapperContext dapperContext) : IUserRepository
                                                 );
                                             """);
         var user = await connection.QueryFirstAsync<User>("""
-                                                              select top 1 from users
+                                                              select * from users LIMIT 1
                                                           """);
 
         return new Result<GetUserByEmailResponse>(new GetUserByEmailResponse(user), true, Error.None);

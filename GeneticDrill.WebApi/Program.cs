@@ -4,7 +4,6 @@ using GeneticDrill.WebApi.Apis.Users;
 using GeneticDrill.WebApi.DataAccess.Abstractions;
 using GeneticDrill.WebApi.DataAccess.Implementations;
 using GeneticDrill.WebApi.Helpers;
-using GeneticDrill.WebApi.Helpers.Configurations;
 using GeneticDrill.WebApi.Services.Abstractions;
 using GeneticDrill.WebApi.Services.Implementations;
 
@@ -20,12 +19,12 @@ public class Program
         // Add services to the container.
         services.AddAuthorization();
 
-        services.AddOptions<DapperConfiguration>()
-            .Bind(configuration.GetSection(DapperConfiguration.SectionName))
-            .ValidateDataAnnotations()
-            .ValidateOnStart();
+        // services.AddOptions<DapperConfiguration>()
+        //     .Bind(configuration.GetSection(DapperConfiguration.SectionName))
+        //     .ValidateDataAnnotations()
+        //     .ValidateOnStart();
 
-        services.AddSingleton<DapperContext>();
+        services.AddSingleton(new DapperContext(configuration.GetSection("DapperConfiguration:ConnectionString").Value!));
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUserService, UserService>();
 

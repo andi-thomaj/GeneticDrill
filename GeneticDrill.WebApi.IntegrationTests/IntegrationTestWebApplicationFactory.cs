@@ -1,6 +1,4 @@
 using GeneticDrill.WebApi.Helpers;
-using GeneticDrill.WebApi.Helpers.Configurations;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
@@ -22,14 +20,15 @@ public class IntegrationTestWebApplicationFactory : WebApplicationFactory<Progra
     {
         builder.ConfigureTestServices(services =>
         {
-            // var descriptor = services
-            //     .SingleOrDefault(x => x.ServiceType == typeof(DapperContext));
-            //
-            // if (descriptor is not null)
-            // {
-            //     services.Remove(descriptor);
-            // }
+            var dapperContextDescriptor = services
+                .SingleOrDefault(x => x.ServiceType == typeof(DapperContext));
+            
+            if (dapperContextDescriptor is not null)
+            {
+                services.Remove(dapperContextDescriptor);
+            }
 
+            services.AddSingleton(new DapperContext(_dbContainer.GetConnectionString()));
             // services.AddDbContext<ModelGenDbContext>(options => options
             //     .UseNpgsql(_dbContainer.GetConnectionString()));
 
