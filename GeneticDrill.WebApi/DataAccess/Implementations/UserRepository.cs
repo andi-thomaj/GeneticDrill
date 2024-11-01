@@ -1,4 +1,5 @@
 using Dapper;
+using GeneticDrill.WebApi.Apis.Users.Requests;
 using GeneticDrill.WebApi.Apis.Users.Responses;
 using GeneticDrill.WebApi.DataAccess.Abstractions;
 using GeneticDrill.WebApi.DataAccess.Entities;
@@ -18,4 +19,9 @@ public class UserRepository(DapperContext dapperContext) : IUserRepository
 
         return new Result<GetUserByEmailResponse>(new GetUserByEmailResponse(user), true, Error.None);
     }
+
+    // public async Task<Result<CreateUserResponse>> CreateUserAsync(CreateUserRequest request)
+    // {
+    //     var connection = dapperContext.CreateConnection();
+    // }
 }
