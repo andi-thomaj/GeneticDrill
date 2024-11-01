@@ -4,10 +4,10 @@ namespace GeneticDrill.WebApi.Apis.Users.Responses;
 
 public record GetUserByEmailResponse(User User)
 {
-    public string FirstName { get; init; } = User.FirstName;
-    public string MiddleName { get; init; } = User.MiddleName;
-    public string LastName { get; init; } = User.LastName;
-    public string Email { get; init; } = User.Email;
-    public string GooglePictureUrl { get; init; } = User.GooglePictureUrl;
-    public string FrontendTheme { get; init; } = User.FrontendTheme;
+    public string FirstName { get; init; } = User.first_name;
+    public string MiddleName { get; init; } = User.middle_name;
+    public string LastName { get; init; } = User.last_name;
+    public string Email { get; init; } = User.email;
+    public string GooglePictureUrl { get; init; } = User.google_picture_url;
+    public string FrontendTheme { get; init; } = User.frontend_theme;
 };

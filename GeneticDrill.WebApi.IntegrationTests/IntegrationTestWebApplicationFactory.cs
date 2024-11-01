@@ -29,17 +29,6 @@ public class IntegrationTestWebApplicationFactory : WebApplicationFactory<Progra
             }
 
             services.AddSingleton(new DapperContext(_dbContainer.GetConnectionString()));
-            // services.AddDbContext<ModelGenDbContext>(options => options
-            //     .UseNpgsql(_dbContainer.GetConnectionString()));
-
-            // services.AddAuthentication(defaultScheme: "TestScheme")
-            //     .AddScheme<AuthenticationSchemeOptions, TestAuthenticationHandler>(
-            //         "TestScheme", options => { });
-
-            // services.AddOptions<DapperConfiguration>()
-            //     .Bind(configuration.GetSection(DapperConfiguration.SectionName))
-            //     .ValidateDataAnnotations()
-            //     .ValidateOnStart();
         });
     }
 
