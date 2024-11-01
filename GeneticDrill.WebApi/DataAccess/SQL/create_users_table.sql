@@ -15,11 +15,41 @@ CREATE TABLE users
     google_token VARCHAR(10_000),
     google_picture_url VARCHAR(500),
     frontend_theme VARCHAR(50),
-    genetic_data_id UUID,
+    genetic_raw_data_id UUID REFERENCES genetic_raw_data("id") ON DELETE CASCADE ON UPDATE,
+	dna_platform_id UUID REFERENCES dna_platforms("id") ON DELETE CASCADE ON UPDATE,
     created_at TIMESTAMP DEFAULT NOW() NOT NULL,
     created_by VARCHAR(50) NOT NULL,
     updated_at TIMESTAMP,
     updated_by VARCHAR(50)
 );
 
+CREATE TABLE genetic_raw_data(
+                                 "id" UUID PRIMARY KEY DEFAULT uuid_generate_v4() NOT NULL,
+                                 raw_data bytea,
+                                 dna_platform_id NOT NULL REFERENCES dna_platforms("id") ON DELETE SET NULL ON UPDATE CASCADE,
+                                 created_at TIMESTAMP DEFAULT NOW() NOT NULL,
+                                 created_by VARCHAR(50) NOT NULL,
+                                 updated_at TIMESTAMP,
+                                 updated_by VARCHAR(50)
+);
 
+
+CREATE TABLE dna_platforms(
+                              "id" UUID PRIMARY KEY DEFAULT uuid_generate_v4() NOT NULL,
+                              "name" VARCHAR(50) NOT NULL,
+                              created_at TIMESTAMP DEFAULT NOW() NOT NULL,
+                              created_by VARCHAR(50) NOT NULL,
+                              updated_at TIMESTAMP,
+                              updated_by VARCHAR(50)
+);
+
+CREATE TABLE nationalities(
+                              "id" UUID PRIMARY KEY DEFAULT uuid_generate_v4() NOT NULL,
+                              "name" VARCHAR(50) NOT NULL,
+                              created_at TIMESTAMP DEFAULT NOW() NOT NULL,
+                              created_by VARCHAR(50) NOT NULL,
+                              updated_at TIMESTAMP,
+                              updated_by VARCHAR(50)
+);
+
+CREATE TABLE regions()
