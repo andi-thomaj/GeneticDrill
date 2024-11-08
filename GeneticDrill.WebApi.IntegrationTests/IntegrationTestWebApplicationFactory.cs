@@ -22,7 +22,7 @@ public class IntegrationTestWebApplicationFactory : WebApplicationFactory<Progra
         {
             var dapperContextDescriptor = services
                 .SingleOrDefault(x => x.ServiceType == typeof(DapperContext));
-            
+
             if (dapperContextDescriptor is not null)
             {
                 services.Remove(dapperContextDescriptor);

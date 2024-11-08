@@ -4,13 +4,13 @@ namespace GeneticDrill.WebApi.Helpers.Extensions;
 
 public static class DatabaseInitialization
 {
-    public static void  InitializeDatabase(this IApplicationBuilder app)
+    public static void InitializeDatabase(this IApplicationBuilder app)
     {
         using IServiceScope serviceScope = app.ApplicationServices.CreateScope();
 
         var dapperContext = serviceScope.ServiceProvider.GetRequiredService<DapperContext>();
         var connection = dapperContext.CreateConnection();
-        
+
         //connection.Execute(CreateDatabase);
         //connection.Execute(CreateTables);
     }

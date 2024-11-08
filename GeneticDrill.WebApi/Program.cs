@@ -25,7 +25,8 @@ public class Program
         //     .ValidateDataAnnotations()
         //     .ValidateOnStart();
 
-        services.AddSingleton(new DapperContext(configuration.GetSection("DapperConfiguration:ConnectionString").Value!));
+        services.AddSingleton(
+            new DapperContext(configuration.GetSection("DapperConfiguration:ConnectionString").Value!));
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUserService, UserService>();
 
@@ -34,7 +35,7 @@ public class Program
         services.AddSwaggerGen();
 
         var app = builder.Build();
-        
+
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {

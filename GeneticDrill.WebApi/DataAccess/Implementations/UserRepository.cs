@@ -13,8 +13,8 @@ public class UserRepository(DapperContext dapperContext) : IUserRepository
     {
         var connection = dapperContext.CreateConnection();
         var user = await connection.QuerySingleAsync<User>("""
-                                                              select * from users LIMIT 1
-                                                          """);
+                                                               select * from users LIMIT 1
+                                                           """);
 
         return new Result<GetUserByEmailResponse>(new GetUserByEmailResponse(user), true, Error.None);
     }
@@ -25,7 +25,7 @@ public class UserRepository(DapperContext dapperContext) : IUserRepository
         var user = await connection.QuerySingleAsync<User>("""
                                                                select * from users LIMIT 1
                                                            """);
-        
+
         return new Result<CreateUserResponse>(new CreateUserResponse(user), true, Error.None);
     }
 }
