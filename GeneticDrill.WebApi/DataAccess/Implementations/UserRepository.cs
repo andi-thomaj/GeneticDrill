@@ -9,8 +9,7 @@ namespace GeneticDrill.WebApi.DataAccess.Implementations;
 
 public class UserRepository(DapperContext dapperContext) : IUserRepository
 {
-    public async Task<Result<GetUserByEmailResponse>> GetUserByEmailAsync(string email,
-        CancellationToken cancelationToken = default)
+    public async Task<Result<GetUserByEmailResponse>> GetUserByEmailAsync(string email)
     {
         var connection = dapperContext.CreateConnection();
         var user = await connection.QuerySingleAsync<User>("""
@@ -20,8 +19,13 @@ public class UserRepository(DapperContext dapperContext) : IUserRepository
         return new Result<GetUserByEmailResponse>(new GetUserByEmailResponse(user), true, Error.None);
     }
 
-    // public async Task<Result<CreateUserResponse>> CreateUserAsync(CreateUserRequest request)
-    // {
-    //     var connection = dapperContext.CreateConnection();
-    // }
+    public async Task<Result<CreateUserResponse>> CreateUserAsync(CreateUserRequest request)
+    {
+        var connection = dapperContext.CreateConnection();
+        var user = await connection.QuerySingleAsync<User>("""
+                                                               select * from users LIMIT 1
+                                                           """);
+        
+        return new Result<CreateUserResponse>(new CreateUserResponse(user), true, Error.None);
+    }
 }

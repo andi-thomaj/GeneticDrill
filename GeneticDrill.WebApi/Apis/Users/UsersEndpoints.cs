@@ -16,9 +16,9 @@ public static class UsersEndpoints
     }
 
     private static async Task<Results<Ok<GetUserByEmailResponse>, NotFound>> GetUserByEmail(string email,
-        IUserService userService, CancellationToken cancellationToken)
+        IUserService userService)
     {
-        var result = await userService.GetUserByEmailAsync(email, cancellationToken);
+        var result = await userService.GetUserByEmailAsync(email);
 
         return result.IsSuccess ? TypedResults.Ok(result.Value) : TypedResults.NotFound();
     }

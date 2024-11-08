@@ -7,12 +7,11 @@ namespace GeneticDrill.WebApi.Services.Implementations;
 
 public class UserService(IUserRepository userRepository) : IUserService
 {
-    public Task<Result<GetUserByEmailResponse>> GetUserByEmailAsync(string email,
-        CancellationToken cancellationToken = default)
+    public Task<Result<GetUserByEmailResponse>> GetUserByEmailAsync(string email)
     {
         try
         {
-            return userRepository.GetUserByEmailAsync(email, cancellationToken);
+            return userRepository.GetUserByEmailAsync(email);
         }
         catch (Exception e)
         {
