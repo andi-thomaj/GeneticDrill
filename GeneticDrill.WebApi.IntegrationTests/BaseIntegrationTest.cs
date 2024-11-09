@@ -1,5 +1,5 @@
+using GeneticDrill.WebApi.Core.Services.Abstractions;
 using GeneticDrill.WebApi.Helpers;
-using GeneticDrill.WebApi.Services.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GeneticDrill.WebApi.IntegrationTests;

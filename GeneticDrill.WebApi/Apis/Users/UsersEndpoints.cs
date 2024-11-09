@@ -1,5 +1,5 @@
 using GeneticDrill.WebApi.Apis.Users.Responses;
-using GeneticDrill.WebApi.Services.Abstractions;
+using GeneticDrill.WebApi.Core.Services.Abstractions;
 using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace GeneticDrill.WebApi.Apis.Users;

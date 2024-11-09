@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GeneticDrill.WebApi.DataAccess.Entities;
+namespace GeneticDrill.WebApi.Core.DataAccess.Entities;
 
 public class BaseEntity
 {

@@ -1,4 +1,4 @@
-using GeneticDrill.WebApi.DataAccess.Entities;
+using GeneticDrill.WebApi.Core.DataAccess.Entities;
 
 namespace GeneticDrill.WebApi.Apis.Users.Responses;
 
