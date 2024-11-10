@@ -4,14 +4,14 @@ using GeneticDrill.WebApi.Apis.Users.Responses;
 using GeneticDrill.WebApi.Core.DataAccess.Abstractions;
 using GeneticDrill.WebApi.Helpers;
 
-namespace GeneticDrill.WebApi.Core.DataAccess.Implementations.User;
+namespace GeneticDrill.WebApi.Core.Services.Implementations.User;
 
-public class UserRepository(DapperContext dapperContext) : IUserRepository
+public class UserService(DapperContext dapperContext) : IUserService
 {
     public async Task<Result<GetUserByEmailResponse>> GetUserByEmailAsync(string email)
     {
         var connection = dapperContext.CreateConnection();
-        var user = await connection.QuerySingleAsync<Entities.User>($"select * from get_user_by_email({email})");
+        var user = await connection.QuerySingleAsync<DataAccess.Entities.User>($"select * from get_user_by_email({email})");
 
         if (user is null)
         {
@@ -33,7 +33,7 @@ public class UserRepository(DapperContext dapperContext) : IUserRepository
         parameters.Add("@password", request.Password);
         parameters.Add("@google_picture_url", request.GooglePictureUrl);
         parameters.Add("@frontend_theme", request.FrontendTheme);
-        var user = await connection.QuerySingleAsync<Entities.User>(
+        var user = await connection.QuerySingleAsync<DataAccess.Entities.User>(
             "select * from create_user(@first_name, @middle_name, @last_name, @email, @password, @google_picture_url, @frontend_theme)",
             parameters);
         
