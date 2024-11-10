@@ -2,6 +2,7 @@ namespace GeneticDrill.WebApi.Data.Entities;
 
 public class User : BaseEntity
 {
+    public string status { get; init; } = string.Empty;
     public string first_name { get; init; } = string.Empty;
 
     public string? middle_name { get; init; }

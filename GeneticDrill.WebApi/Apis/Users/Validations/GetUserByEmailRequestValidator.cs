@@ -10,8 +10,6 @@ public class GetUserByEmailRequestValidator : AbstractValidator<GetUserByEmailRe
         RuleFor(x => x.Email)
             .NotEmpty()
             .NotNull()
-            .WithMessage("Email is required")
-            .EmailAddress()
-            .WithMessage("Typed email is invalid");
+            .EmailAddress();
     }
 }

@@ -19,33 +19,53 @@ public static class UsersEndpoints
         return builder;
     }
 
-    private static async Task<Results<Ok<GetUserByEmailResponse>, NotFound, BadRequest<Result>>> GetUserByEmail(string email,
+    private static async Task<Results<Ok<GetUserByEmailResponse>, NotFound<Error>, BadRequest<Error>, Conflict<Error>>> GetUserByEmail(string email,
         IUserService userService)
     {
         GetUserByEmailRequestValidator validator = new();
         var validationResult = await validator.ValidateAsync(new GetUserByEmailRequest(email));
         if (!validationResult.IsValid)
         {
-            return TypedResults.BadRequest(new Result(false, Error.FluentValidationError(nameof(GetUserByEmail), validationResult.Errors)));
+            return TypedResults.BadRequest(Error.FluentValidationError(nameof(GetUserByEmail), validationResult.Errors));
         }
         
         var result = await userService.GetUserByEmailAsync(email);
 
-        return result.IsSuccess ? TypedResults.Ok(result.Value) : TypedResults.NotFound();
+        if (result.IsFailure)
+        {
+            return result.Error.Type switch
+            {
+                ErrorType.Conflict => TypedResults.Conflict(result.Error),
+                ErrorType.NotFound => TypedResults.NotFound(result.Error),
+                _ => TypedResults.BadRequest(result.Error)
+            };
+        }
+
+        return TypedResults.Ok(result.Value);
     }
     
-    private static async Task<Results<Ok<CreateUserResponse>, NotFound, BadRequest<Result>>> CreateUser(CreateUserRequest request,
+    private static async Task<Results<Ok<CreateUserResponse>, NotFound<Error>, BadRequest<Error>, Conflict<Error>>> CreateUser(CreateUserRequest request,
         IUserService userService)
     {
         CreateUserRequestValidator validator = new();
         var validationResult = await validator.ValidateAsync(request);
         if (!validationResult.IsValid)
         {
-            return TypedResults.BadRequest(new Result(false, Error.FluentValidationError(nameof(CreateUser), validationResult.Errors)));
+            return TypedResults.BadRequest(Error.FluentValidationError(nameof(CreateUser), validationResult.Errors));
         }
         
         var result = await userService.CreateUserAsync(request);
 
-        return result.IsSuccess ? TypedResults.Ok(result.Value) : TypedResults.NotFound();
+        if (result.IsFailure)
+        {
+            return result.Error.Type switch
+            {
+                ErrorType.Conflict => TypedResults.Conflict(result.Error),
+                ErrorType.NotFound => TypedResults.NotFound(result.Error),
+                _ => TypedResults.BadRequest(result.Error)
+            };
+        }
+
+        return TypedResults.Ok(result.Value);
     }
 }

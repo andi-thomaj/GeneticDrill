@@ -1,3 +1,6 @@
+using GeneticDrill.WebApi.Apis.Users.Responses;
+using Microsoft.AspNetCore.Http.HttpResults;
+
 namespace GeneticDrill.WebApi.Helpers;
 
 public record Error

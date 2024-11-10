@@ -10,16 +10,29 @@ public class CreateUserRequestValidator : AbstractValidator<CreateUserRequest>
         RuleFor(request => request.FirstName)
             .NotEmpty()
             .NotNull()
-            .WithMessage("First name is required")
             .MaximumLength(50)
-            .MinimumLength(3)
-            .WithMessage("First name must be between 3 and 50 characters");
+            .MinimumLength(3);
+
+        RuleFor(request => request.LastName)
+            .NotEmpty()
+            .NotNull()
+            .MaximumLength(50)
+            .MinimumLength(3);
         
-        // RuleFor(request => request.MiddleName).e().WithMessage("Email is required");
-        // RuleFor(request => request.Email).NotEmpty().WithMessage("Email is required");
-        // RuleFor(request => request.Email).NotEmpty().WithMessage("Email is required");
-        // RuleFor(request => request.Email).NotEmpty().WithMessage("Email is required");
-        // RuleFor(request => request.Email).NotEmpty().WithMessage("Email is required");
-        // RuleFor(request => request.Email).NotEmpty().WithMessage("Email is required");
+        RuleFor(request => request.Email)
+            .NotEmpty()
+            .NotNull()
+            .EmailAddress();
+        
+        RuleFor(request => request.Password)
+            .NotEmpty()
+            .NotNull()
+            .MaximumLength(50)
+            .MinimumLength(5);
+        
+        RuleFor(request => request.FrontendTheme)
+            .NotEmpty()
+            .NotNull()
+            .MaximumLength(50);
     }
 }

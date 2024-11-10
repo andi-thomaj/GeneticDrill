@@ -44,7 +44,7 @@ public class UserService(DapperContext dapperContext) : IUserService
             parameters.Add("@password", request.Password);
             parameters.Add("@middle_name", request.MiddleName);
             parameters.Add("@google_picture_url", request.GooglePictureUrl);
-            var user = await connection.QuerySingleAsync<Data.Entities.User>(
+            var user = await connection.QuerySingleOrDefaultAsync<Data.Entities.User>(
                 "select * from create_user(@first_name, @last_name, @email, @frontend_theme, @password, @middle_name, @google_picture_url)",
                 parameters);
 
@@ -55,6 +55,13 @@ public class UserService(DapperContext dapperContext) : IUserService
                         $"User with email {request.Email} couldn't be created"));
             }
 
+            if (user.status == "conflict")
+            {
+                return new Result<CreateUserResponse>(new CreateUserResponse(user), false,
+                    Error.Conflict(nameof(CreateUserAsync),
+                        $"User with email {request.Email} already in use"));
+            }
+
             return new Result<CreateUserResponse>(new CreateUserResponse(user), true, Error.None);
         }
         catch (Exception e)
@@ -63,4 +70,14 @@ public class UserService(DapperContext dapperContext) : IUserService
                 Error.Failure(nameof(CreateUserAsync), e.Message));
         }
     }
+
+    // public async Task<Result> UpdateUser()
+    // {
+    //     
+    // }
+    //
+    // public async Task<Result> DeleteUserById(Guid id)
+    // {
+    //     
+    // }
 }
