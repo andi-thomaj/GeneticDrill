@@ -1,4 +1,4 @@
-namespace GeneticDrill.WebApi.Core.DataAccess.Entities;
+namespace GeneticDrill.WebApi.Data.Entities;
 
 public class User : BaseEntity
 {

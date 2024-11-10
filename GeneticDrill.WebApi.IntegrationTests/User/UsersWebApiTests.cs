@@ -7,7 +7,7 @@ public class UsersWebApiTests(IntegrationTestWebApplicationFactory factory) : Ba
     [Fact]
     public async Task GetByEmail_ShouldReturnUser_WhenUserExists()
     {
-        var user = new AutoFaker<Core.DataAccess.Entities.User>()
+        var user = new AutoFaker<Data.Entities.User>()
             .RuleFor(f => f.email, f => f.Internet.Email())
             .Generate();
 

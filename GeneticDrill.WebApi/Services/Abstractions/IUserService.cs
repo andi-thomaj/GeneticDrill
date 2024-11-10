@@ -2,7 +2,7 @@ using GeneticDrill.WebApi.Apis.Users.Requests;
 using GeneticDrill.WebApi.Apis.Users.Responses;
 using GeneticDrill.WebApi.Helpers;
 
-namespace GeneticDrill.WebApi.Core.DataAccess.Abstractions;
+namespace GeneticDrill.WebApi.Services.Abstractions;
 
 public interface IUserService
 {

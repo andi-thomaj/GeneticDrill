@@ -1,17 +1,30 @@
-using GeneticDrill.WebApi.Core.DataAccess.Entities;
+using GeneticDrill.WebApi.Data.Entities;
 
 namespace GeneticDrill.WebApi.Apis.Users.Responses;
 
-public record GetUserByEmailResponse(User User)
+public record GetUserByEmailResponse
 {
-    public Guid Id { get; init; } = User.id;
-    public string FirstName { get; init; } = User.first_name;
-    public string MiddleName { get; init; } = User.middle_name ?? string.Empty;
-    public string LastName { get; init; } = User.last_name;
-    public string Email { get; init; } = User.email;
-    public string GooglePictureUrl { get; init; } = User.google_picture_url ?? string.Empty;
-    public string FrontendTheme { get; init; } = User.frontend_theme ?? string.Empty;
-    public bool IsBlocked { get; init; } = User.is_blocked;
-    public bool IsDeleted { get; init; } = User.is_deleted;
-    public DateTimeOffset CreatedAt { get; init; } = User.created_at;
+    public GetUserByEmailResponse(User user)
+    {
+        Id = user.id;
+        FirstName = user.first_name;
+        MiddleName = user.middle_name;
+        LastName = user.last_name;
+        Email = user.email;
+        GooglePictureUrl = user.google_picture_url;
+        FrontendTheme = user.frontend_theme;
+        IsBlocked = user.is_blocked;
+        IsDeleted = user.is_deleted;
+        CreatedAt = user.created_at;
+    }
+    public Guid Id { get; init; }
+    public string FirstName { get; init; }
+    public string? MiddleName { get; init; }
+    public string LastName { get; init; }
+    public string Email { get; init; }
+    public string? GooglePictureUrl { get; init; }
+    public string? FrontendTheme { get; init; }
+    public bool IsBlocked { get; init; }
+    public bool IsDeleted { get; init; }
+    public DateTimeOffset CreatedAt { get; init; }
 };

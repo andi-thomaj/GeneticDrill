@@ -1,12 +1,10 @@
 using System.Reflection;
 using FluentValidation;
 using GeneticDrill.WebApi.Apis.Users;
-using GeneticDrill.WebApi.Core.DataAccess.Abstractions;
-using GeneticDrill.WebApi.Core.Services.Abstractions;
-using GeneticDrill.WebApi.Core.Services.Implementations;
-using GeneticDrill.WebApi.Core.Services.Implementations.User;
 using GeneticDrill.WebApi.Helpers;
 using GeneticDrill.WebApi.Helpers.Extensions;
+using GeneticDrill.WebApi.Services.Abstractions;
+using GeneticDrill.WebApi.Services.Implementations.User;
 
 namespace GeneticDrill.WebApi;
 
@@ -27,7 +25,6 @@ public class Program
 
         services.AddSingleton(
             new DapperContext(configuration.GetSection("DapperConfiguration:ConnectionString").Value!));
-        services.AddScoped<IUserService, UserService>();
         services.AddScoped<IUserService, UserService>();
 
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
