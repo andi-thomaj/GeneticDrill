@@ -3,22 +3,25 @@ namespace GeneticDrill.WebApi.Helpers;
 public record Error
 {
     public static readonly Error None = new(string.Empty, string.Empty, ErrorType.Failure);
-
+    
     public static readonly Error NullValue = new(
         "General.Null",
         "Null value was provided",
         ErrorType.Failure);
-
-    public Error(string code, string description, ErrorType type)
+    
+    public Error(string code, string description, ErrorType type, List<string>? validationErrors = null)
     {
         Code = code;
         Description = description;
         Type = type;
+        ValidationErrors = validationErrors ?? [];
     }
 
     public string Code { get; }
 
     public string Description { get; }
+
+    public List<string> ValidationErrors { get; }
 
     public ErrorType Type { get; }
 
@@ -40,5 +43,10 @@ public record Error
     public static Error Conflict(string code, string description)
     {
         return new Error(code, description, ErrorType.Conflict);
+    }
+    
+    public static Error FluentValidationError(string code, List<FluentValidation.Results.ValidationFailure> validationErrors)
+    {
+        return new Error(code, "Validation errors occured", ErrorType.Validation, validationErrors.Select(x => x.ErrorMessage).ToList());
     }
 }
