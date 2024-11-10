@@ -8,8 +8,8 @@ public record Error
         "General.Null",
         "Null value was provided",
         ErrorType.Failure);
-    
-    public Error(string code, string description, ErrorType type, List<string>? validationErrors = null)
+
+    private Error(string code, string description, ErrorType type, List<string>? validationErrors = null)
     {
         Code = code;
         Description = description;

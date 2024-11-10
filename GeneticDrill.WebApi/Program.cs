@@ -3,6 +3,7 @@ using FluentValidation;
 using GeneticDrill.WebApi.Apis.Users;
 using GeneticDrill.WebApi.Helpers;
 using GeneticDrill.WebApi.Helpers.Extensions;
+using GeneticDrill.WebApi.Services;
 using GeneticDrill.WebApi.Services.Abstractions;
 using GeneticDrill.WebApi.Services.Implementations.User;
 

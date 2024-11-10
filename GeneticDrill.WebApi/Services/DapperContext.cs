@@ -1,7 +1,7 @@
 using System.Data;
 using Npgsql;
 
-namespace GeneticDrill.WebApi.Helpers;
+namespace GeneticDrill.WebApi.Services;
 
 public class DapperContext(string connectionString)
 {
