@@ -77,11 +77,23 @@ public class UserService(DapperContext dapperContext) : IUserService
         {
             var connection = dapperContext.CreateConnection();
             var parameters = new DynamicParameters();
-            parameters.Add("@id", request.Id);
-            parameters.Add("@first_name", request.FirstName);
-            parameters.Add("@middle_name", request.MiddleName);
-            parameters.Add("@last_name", request.LastName);
-            parameters.Add("@frontend_theme", request.FrontendTheme);
+            parameters.Add("@user_id", request.Id);
+            parameters.Add("@new_first_name", request.FirstName);
+            parameters.Add("@new_middle_name", request.MiddleName);
+            parameters.Add("@new_last_name", request.LastName);
+            parameters.Add("@new_frontend_theme", request.FrontendTheme);
+            
+            var user = await connection.QueryFirstAsync<Data.Entities.User>(
+                "select * from update_user(@user_id, @new_first_name, @new_middle_name, @new_last_name, @new_frontend_theme)", parameters);
+
+            if (user.status == "not_found")
+            {
+                return new Result<UpdateUserResponse>(null, false,
+                    Error.NotFound(nameof(UpdateUserAsync),
+                        $"User with id {request.Id} doesn't exist"));
+            }
+
+            return new Result<UpdateUserResponse>(new UpdateUserResponse(user), true, Error.None);
         }
         catch (Exception e)
         {

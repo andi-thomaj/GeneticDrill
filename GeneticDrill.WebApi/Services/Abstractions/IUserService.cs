@@ -8,4 +8,6 @@ public interface IUserService
 {
     Task<Result<GetUserByEmailResponse>> GetUserByEmailAsync(string email);
     Task<Result<CreateUserResponse>> CreateUserAsync(CreateUserRequest request);
+    Task<Result<UpdateUserResponse>> UpdateUserAsync(UpdateUserRequest request);
+    Task<Result> DeleteUserById(Guid id);
 }
