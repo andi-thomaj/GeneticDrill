@@ -71,13 +71,45 @@ public class UserService(DapperContext dapperContext) : IUserService
         }
     }
 
-    // public async Task<Result> UpdateUser()
-    // {
-    //     
-    // }
-    //
-    // public async Task<Result> DeleteUserById(Guid id)
-    // {
-    //     
-    // }
+    public async Task<Result<UpdateUserResponse>> UpdateUserAsync(UpdateUserRequest request)
+    {
+        try
+        {
+            var connection = dapperContext.CreateConnection();
+            var parameters = new DynamicParameters();
+            parameters.Add("@id", request.Id);
+            parameters.Add("@first_name", request.FirstName);
+            parameters.Add("@middle_name", request.MiddleName);
+            parameters.Add("@last_name", request.LastName);
+            parameters.Add("@frontend_theme", request.FrontendTheme);
+        }
+        catch (Exception e)
+        {
+            return new Result<UpdateUserResponse>(null, false,
+                Error.Failure(nameof(UpdateUserAsync), e.Message));
+        }
+    }
+    
+    public async Task<Result> DeleteUserById(Guid id)
+    {
+        try
+        {
+            var connection = dapperContext.CreateConnection();
+            var parameters = new DynamicParameters();
+            parameters.Add("@id", id);
+            
+            var rowsAffected = await connection.ExecuteAsync("delete from users where id=@id", parameters);
+
+            if (rowsAffected == 0)
+            {
+                return new Result(false, Error.NotFound(nameof(DeleteUserById), $"User with id {id} not found"));
+            }
+            
+            return new Result(true, Error.None);
+        }
+        catch (Exception e)
+        {
+            return new Result( false, Error.Failure(nameof(DeleteUserById), e.Message));
+        }
+    }
 }
